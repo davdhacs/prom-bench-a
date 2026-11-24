@@ -57,8 +57,10 @@ jobs:
 
       - name: Build prometheus
         run: |
+          T0=$(date +%s%3N)
           go build -o prometheus ./cmd/prometheus
-          echo "RESULT phase=build ms=0"
+          E=$(date +%s%3N)
+          echo "RESULT phase=build ms=$((E-T0))"
 
       - name: Verify binary
         run: |
